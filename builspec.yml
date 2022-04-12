@@ -1,0 +1,25 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      php: 7.3
+  pre_build: # commands to be run before build
+    commands:
+      - echo Install composer
+      - echo Move composer to bin location for excecution
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo installing composer...
+      - echo installing node packages...
+      - npm install
+      - echo Run npm prod build
+      - npm run prod
+      - echo creating .env file...
+      - echo generating app key
+  post_build:
+    commands:
+      - echo Build completed on `date`
+artifacts:
+  files:
+    - "**/*"
